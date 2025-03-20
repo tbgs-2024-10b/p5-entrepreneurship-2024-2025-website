@@ -5,7 +5,7 @@ import jsxA11y from 'eslint-plugin-jsx-a11y'
 import prettier from 'eslint-plugin-prettier'
 import prettierRecommended from 'eslint-plugin-prettier/recommended'
 import react from 'eslint-plugin-react'
-import reactHooks from 'eslint-plugin-react-hooks'
+import * as reactHooks from 'eslint-plugin-react-hooks'
 import globals from 'globals'
 import * as tsEslint from 'typescript-eslint'
 
@@ -22,7 +22,10 @@ export default tsEslint.config(
 		files: ['**/*.{ts,tsx}', 'eslint.config.ts'],
 		...react.configs.flat.recommended!,
 		...react.configs.flat['jsx-runtime']!,
-		...reactHooks.configs['recommended-latest'],
+		...(reactHooks.configs['recommended-latest'] as Omit<
+			(typeof reactHooks.configs)['recommended-latest'],
+			'name'
+		>),
 		...jsxA11y.flatConfigs.recommended,
 		languageOptions: {
 			...react.configs.flat.recommended!.languageOptions,
@@ -44,8 +47,8 @@ export default tsEslint.config(
 			},
 		},
 		plugins: {
-			react,
 			'react-hooks': reactHooks,
+			react,
 			'jsx-a11y': jsxA11y,
 			prettier,
 			'@typescript-eslint': tsEslint.plugin,
