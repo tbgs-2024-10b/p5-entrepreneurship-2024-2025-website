@@ -2,12 +2,15 @@ name: Deploy
 on:
     push:
         branches: 'main'
+    workflow_dispatch:
 concurrency:
     group: ${{ github.workflow }}
-    cancel-in-progress: true
+    cancel-in-progress: false
 
 permissions:
-    contents: write
+    contents: read
+    pages: write
+    id-token: write
 
 jobs:
     deploy:
@@ -29,9 +32,15 @@ jobs:
             - name: Build
               run: npm run build
 
-            - name: Deploy
-              run: |
-                  git remote set-url origin https://git:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git
-                  npx gh-pages -d build -u "github-actions-bot <support+actions@github.com>"
-              env:
-                  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+            - name: Setup Pages
+              uses: actions/configure-pages@v5
+
+            - name: Upload artifact
+              uses: actions/upload-pages-artifact@v3
+              with:
+                  # Upload entire repository
+                  path: 'build'
+
+            - name: Deploy to GitHub Pages
+              id: deployment
+              uses: actions/deploy-pages@v4
