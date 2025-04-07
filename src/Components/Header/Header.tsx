@@ -5,16 +5,18 @@ import { Container, Link, LinkItem, Links, Logo } from './Styles'
 const Header: FC = () => {
 	return (
 		<Container>
-			<Logo>P5</Logo>
+			<Link href='#hero'>
+				<Logo>P5</Logo>
+			</Link>
 			<Links>
 				<LinkItem>
-					<Link>About Us</Link>
+					<Link href='#aboutUs'>About Us</Link>
 				</LinkItem>
 				<LinkItem>
-					<Link>Products</Link>
+					<Link href='#products'>Products</Link>
 				</LinkItem>
 				<LinkItem>
-					<Link>Contact Us</Link>
+					<Link href='#contactUs'>Contact Us</Link>
 				</LinkItem>
 			</Links>
 		</Container>

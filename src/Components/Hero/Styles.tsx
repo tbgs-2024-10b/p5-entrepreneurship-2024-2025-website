@@ -2,7 +2,7 @@ import { styled } from 'styled-components'
 
 import Theme from 'Constants/Theme'
 
-export const Container = styled.div`
+export const Container = styled.section`
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -14,7 +14,7 @@ export const Container = styled.div`
 `
 
 export const InnerContainer = styled.div`
-	height: 60%;
+	height: 70%;
 	width: 90%;
 
 	display: flex;

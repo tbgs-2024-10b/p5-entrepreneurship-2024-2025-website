@@ -12,12 +12,12 @@ import {
 
 const Hero: FC = () => {
 	return (
-		<Container>
+		<Container id='hero'>
 			<InnerContainer>
 				<Content>
 					<Title>P5-3</Title>
 					<Buttons>
-						<Button>See Our Products</Button>
+						<Button href='#products'>See Our Products</Button>
 					</Buttons>
 				</Content>
 				<Image

@@ -47,4 +47,7 @@ export const LinkItem = styled.li`
 	font-weight: bold;
 `
 
-export const Link = styled.a``
+export const Link = styled.a`
+	text-decoration: none;
+	color: ${Theme.secondary};
+`

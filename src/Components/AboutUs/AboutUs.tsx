@@ -6,7 +6,7 @@ import { Text } from './Styles'
 
 const AboutUs: FC = () => {
 	return (
-		<SectionContainer>
+		<SectionContainer id='aboutUs'>
 			<SectionTitle>About Us</SectionTitle>
 			<Text>
 				Lorem ipsum dolor sit amet consectetur adipisicing elit.
