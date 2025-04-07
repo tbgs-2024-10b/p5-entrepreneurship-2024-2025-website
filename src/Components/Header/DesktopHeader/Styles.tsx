@@ -2,7 +2,7 @@ import { styled } from 'styled-components'
 
 import Theme from 'Constants/Theme'
 
-export const Container = styled.div`
+export const Container = styled.header`
 	width: 100%;
 	height: 50px;
 
