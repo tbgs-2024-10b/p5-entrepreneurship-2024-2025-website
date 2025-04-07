@@ -6,11 +6,12 @@ interface Props {
 	name: string
 	description: string
 	imageSrc: string
+	inverted: boolean
 }
 
 const ProductCard: FC<Props> = props => {
 	return (
-		<Container>
+		<Container $inverted={props.inverted}>
 			<Content>
 				<Name>{props.name}</Name>
 				<Description>{props.description}</Description>

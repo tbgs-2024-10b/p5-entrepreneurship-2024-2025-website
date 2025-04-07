@@ -1,10 +1,10 @@
 import { styled } from 'styled-components'
 
-export const Container = styled.div`
+export const Container = styled.div<{ $inverted: boolean }>`
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	flex-direction: row;
+	flex-direction: ${props => (props.$inverted ? 'row-reverse' : 'row')};
 	gap: 20px;
 
 	width: 100%;
