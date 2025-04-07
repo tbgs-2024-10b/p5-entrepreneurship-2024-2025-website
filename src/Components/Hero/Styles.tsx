@@ -24,6 +24,7 @@ export const InnerContainer = styled.div`
 	gap: 20px;
 
 	@media screen and (max-width: 600px) {
+		width: 100%;
 		height: 100%;
 		flex-direction: column-reverse;
 		justify-content: space-evenly;
@@ -31,6 +32,8 @@ export const InnerContainer = styled.div`
 `
 
 export const Content = styled.div`
+	width: 90%;
+
 	display: flex;
 	flex-direction: column;
 	justify-content: flex-start;
