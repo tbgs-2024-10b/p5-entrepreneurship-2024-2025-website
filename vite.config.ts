@@ -39,6 +39,7 @@ export default defineConfig(({ mode }) => {
 	}
 
 	return {
+		base: '/p5-entrepreneurship-2024-2025-website/',
 		plugins: [
 			react(),
 			svgr(),
