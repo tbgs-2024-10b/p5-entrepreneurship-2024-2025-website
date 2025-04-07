@@ -7,6 +7,8 @@ import {
 	Content,
 	Image,
 	InnerContainer,
+	Subtitle,
+	Texts,
 	Title,
 } from './Styles'
 
@@ -15,7 +17,15 @@ const Hero: FC = () => {
 		<Container id='hero'>
 			<InnerContainer>
 				<Content>
-					<Title>P5-3</Title>
+					<Texts>
+						<Title>P5-3</Title>
+						<Subtitle>
+							Lorem ipsum dolor sit amet consectetur, adipisicing
+							elit. Nobis, sunt consequuntur. Pariatur incidunt
+							nostrum blanditiis culpa distinctio maxime quam
+							magni.
+						</Subtitle>
+					</Texts>
 					<Buttons>
 						<Button href='#products'>See Our Products</Button>
 					</Buttons>

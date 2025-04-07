@@ -20,21 +20,37 @@ export const InnerContainer = styled.div`
 	display: flex;
 	flex-direction: row;
 	justify-content: space-between;
-	align-items: flex-start;
+	align-items: center;
+	gap: 20px;
+
+	@media screen and (max-width: 600px) {
+		height: 100%;
+		flex-direction: column-reverse;
+		justify-content: space-evenly;
+	}
 `
 
 export const Content = styled.div`
-	width: 50%;
-	height: 100%;
-
 	display: flex;
 	flex-direction: column;
-	justify-content: space-between;
+	justify-content: flex-start;
+	gap: 20px;
+`
 
-	padding: 20px 0;
+export const Texts = styled.div`
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+	align-items: flex-start;
+	gap: 10px;
 `
 
 export const Title = styled.h1``
+
+export const Subtitle = styled.h2`
+	font-size: 16px;
+	font-weight: normal;
+`
 
 export const Buttons = styled.div`
 	display: flex;
@@ -57,5 +73,13 @@ export const Button = styled.a`
 `
 
 export const Image = styled.img`
-	height: 100%;
+	width: 50%;
+
+	@media screen and (max-width: 1000px) {
+		width: 60%;
+	}
+
+	@media screen and (max-width: 600px) {
+		width: 100%;
+	}
 `
