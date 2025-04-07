@@ -9,6 +9,7 @@ const GlobalStyle = createGlobalStyle`
 		font-family: "Roboto", sans-serif;
 
 		scroll-margin-top: 50px;
+		scroll-behavior: smooth;
 	}
 `
 
