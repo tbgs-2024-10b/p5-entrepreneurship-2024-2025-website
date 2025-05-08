@@ -5,7 +5,6 @@ import {
 	Buttons,
 	Container,
 	Content,
-	Image,
 	InnerContainer,
 	Texts,
 	Title,
@@ -23,10 +22,6 @@ const Hero: FC = () => {
 						<Button href='#products'>See Our Products</Button>
 					</Buttons>
 				</Content>
-				<Image
-					src='https://upload.wikimedia.org/wikipedia/commons/thumb/f/f8/Aspect-ratio-16x9.svg/1200px-Aspect-ratio-16x9.svg.png'
-					alt='Hero Image'
-				/>
 			</InnerContainer>
 		</Container>
 	)

@@ -8,6 +8,8 @@ export const Image = styled.img`
 
 	transition: opacity 0.2s ease-in-out;
 
+	border-radius: 8px;
+
 	&.faded {
 		opacity: 0;
 	}
@@ -26,6 +28,7 @@ export const ImagePlaceholder = styled.div`
 	align-items: center;
 
 	border: 2px dashed ${Theme.primary};
+	border-radius: 8px;
 `
 
 export const Info = styled.p``

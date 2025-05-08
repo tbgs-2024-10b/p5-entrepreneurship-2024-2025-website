@@ -9,6 +9,10 @@ export const Container = styled.section`
 
 	width: 100%;
 	height: 100dvh;
+
+	background-image: url('${__PUBLIC_URL__}/hero.jpg');
+	background-size: cover;
+	background-repeat: no-repeat;
 `
 
 export const InnerContainer = styled.div`
@@ -46,7 +50,9 @@ export const Texts = styled.div`
 	gap: 10px;
 `
 
-export const Title = styled.h1``
+export const Title = styled.h1`
+	color: ${Theme.secondary};
+`
 
 export const Subtitle = styled.h2`
 	font-size: 16px;
@@ -76,17 +82,5 @@ export const Button = styled.a`
 
 	&:hover {
 		background-color: ${Theme.highlight};
-	}
-`
-
-export const Image = styled.img`
-	width: 50%;
-
-	@media screen and (max-width: 1000px) {
-		width: 60%;
-	}
-
-	@media screen and (max-width: 600px) {
-		width: 100%;
 	}
 `

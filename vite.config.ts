@@ -74,6 +74,7 @@ export default defineConfig(({ mode }) => {
 					'/images/Jiglo.png',
 					'/images/PeablossomIcedTea.png',
 					'/images/PopAndCrumbs.png',
+					'/hero.jpg',
 				],
 				manifest: {
 					name: 'Sip & Bites',
