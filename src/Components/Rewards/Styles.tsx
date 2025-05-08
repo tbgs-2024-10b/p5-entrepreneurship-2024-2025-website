@@ -46,3 +46,16 @@ export const Button = styled.button`
 
 	font-size: 16px;
 `
+
+export const PreviousImages = styled.div`
+	width: 40%;
+
+	display: flex;
+	flex-direction: row;
+	gap: 10px;
+`
+
+export const PreviousImage = styled.img`
+	width: 30%;
+	aspect-ratio: 4/5;
+`

@@ -4,14 +4,17 @@ import { SectionContainer, SectionTitle } from 'Components/Common'
 
 import Products from 'Constants/Products'
 
-import { Button, Image, ImagePlaceholder, Info } from './Styles'
+import {
+	Button,
+	Image,
+	ImagePlaceholder,
+	Info,
+	PreviousImage,
+	PreviousImages,
+} from './Styles'
 
 const Rewards: FC = () => {
-	const [Streak, SetStreak] = useState(0)
-	const [PreviousProductId, SetPreviousProductId] = useState<string | null>(
-		null,
-	)
-	const [DidLose, SetDidLose] = useState(false)
+	const [PreviousProductIds, SetPreviousProductIds] = useState<string[]>([])
 	const [DidStart, SetDidStart] = useState(false)
 	const [IsFading, SetIsFading] = useState(false)
 
@@ -22,28 +25,14 @@ const Rewards: FC = () => {
 			// eslint-disable-next-line @typescript-eslint/no-non-null-assertion
 			Products[Math.floor(Math.random() * Products.length)]!
 
-		SetPreviousProductId(randomProduct.id)
+		SetPreviousProductIds(prev => [...prev, randomProduct.id])
 
 		SetIsFading(true)
-
-		if (PreviousProductId === null) {
-			SetStreak(1)
-
-			return
-		}
-
-		if (randomProduct.id === PreviousProductId) {
-			SetStreak(prev => prev + 1)
-		} else {
-			SetDidLose(true)
-		}
-	}, [PreviousProductId])
+	}, [])
 
 	const Restart = useCallback(() => {
-		SetStreak(0)
-		SetDidLose(false)
 		SetDidStart(false)
-		SetPreviousProductId(null)
+		SetPreviousProductIds([])
 	}, [])
 
 	return (
@@ -55,7 +44,11 @@ const Rewards: FC = () => {
 					alt="Game's Image"
 					src={
 						Products.find(
-							product => product.id === PreviousProductId,
+							product =>
+								product.id ===
+								PreviousProductIds[
+									PreviousProductIds.length - 1
+								],
 						)?.imageSrc
 					}
 					onLoad={() => {
@@ -72,22 +65,14 @@ const Rewards: FC = () => {
 				</ImagePlaceholder>
 			)}
 
-			{DidLose ? (
-				<>
-					<Info>You lost! Press restart to try again!</Info>
-					<Info>Your streak was {Streak}.</Info>
-					<Button onClick={Restart}>Restart</Button>
-				</>
-			) : DidStart ? (
-				Streak >= 3 ? (
+			{DidStart ? (
+				PreviousProductIds.length >= 3 ? (
 					<>
-						<Info>Congratulations! You won! 🎉🎉🎉</Info>
-						<Info>Streak: {Streak}</Info>
+						<Info>Congratulations! It&apos;s done! 🎉🎉🎉</Info>
 						<Button onClick={Restart}>Restart</Button>
 					</>
 				) : (
 					<>
-						<Info>Streak: {Streak}</Info>
 						<Info>&nbsp;</Info>
 						<Button onClick={Reroll}>Reroll</Button>
 					</>
@@ -95,10 +80,22 @@ const Rewards: FC = () => {
 			) : (
 				<>
 					<Info>&nbsp;</Info>
-					<Info>&nbsp;</Info>
 					<Button onClick={Reroll}>Start</Button>
 				</>
 			)}
+
+			<PreviousImages>
+				{PreviousProductIds.map((productId, index) => (
+					<PreviousImage
+						key={index}
+						alt="Game's Image"
+						src={
+							Products.find(product => product.id === productId)
+								?.imageSrc
+						}
+					/>
+				))}
+			</PreviousImages>
 		</SectionContainer>
 	)
 }
