@@ -80,7 +80,10 @@ export default defineConfig(({ mode }) => {
 					name: 'Sip & Bites',
 					short_name: 'Sip & Bites',
 					description: 'Sip & Bites',
+					background_color: '#000',
 					theme_color: '#1b4965',
+					start_url: base,
+					display: 'standalone',
 					icons: [
 						{
 							src: `${base}pwa-192x192.png`,
