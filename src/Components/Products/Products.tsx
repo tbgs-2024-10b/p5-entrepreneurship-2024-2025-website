@@ -27,7 +27,7 @@ const Products: FC = () => {
 		SetImageClickHistory(prev => {
 			const newHistory = [...prev, product.id]
 
-			if (newHistory.length > 2 * correctEasterEggSequence.length) {
+			if (newHistory.length > correctEasterEggSequence.length) {
 				newHistory.shift()
 			}
 
