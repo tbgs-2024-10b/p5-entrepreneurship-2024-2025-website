@@ -51,6 +51,8 @@ export const Texts = styled.div`
 `
 
 export const Title = styled.h1`
+	font-size: 50px;
+
 	color: ${Theme.secondary};
 `
 

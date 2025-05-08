@@ -45,6 +45,12 @@ export const Button = styled.button`
 	cursor: pointer;
 
 	font-size: 16px;
+
+	transition: background-color 0.3s ease-in-out;
+
+	&:hover {
+		background-color: ${Theme.highlight};
+	}
 `
 
 export const PreviousImages = styled.div`
@@ -53,6 +59,14 @@ export const PreviousImages = styled.div`
 	display: flex;
 	flex-direction: row;
 	gap: 10px;
+
+	@media screen and (max-width: 1000px) {
+		width: 70%;
+	}
+
+	@media screen and (max-width: 600px) {
+		width: 90%;
+	}
 `
 
 export const PreviousImage = styled.img`

@@ -1,7 +1,6 @@
 export type WeightedItem<T> = [T, number]
 
 const WeightedRandom = <T>(items: WeightedItem<T>[]): T | undefined => {
-	console.log(items)
 	// Filter out items with non-positive weights.
 	const validItems = items.filter(item => item[1] > 0)
 
