@@ -3,6 +3,8 @@ import { defineConfig, loadEnv } from 'vite'
 import react from '@vitejs/plugin-react'
 
 import { checker } from 'vite-plugin-checker'
+import mkcert from 'vite-plugin-mkcert'
+import { VitePWA } from 'vite-plugin-pwa'
 import svgr from 'vite-plugin-svgr'
 
 import { dirname, resolve } from 'node:path'
@@ -30,6 +32,8 @@ export const resolveAlias = Object.entries(relativeAlias).reduce(
 	{},
 )
 
+const base = '/p5-entrepreneurship-2024-2025-website/'
+
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => {
 	const envPrefix: string[] = ['APP_']
@@ -37,8 +41,6 @@ export default defineConfig(({ mode }) => {
 	const { PORT = '3000', OPEN_BROWSER = 'true' } = {
 		...loadEnv(mode, process.cwd(), ''),
 	}
-
-	const base = '/p5-entrepreneurship-2024-2025-website/'
 
 	return {
 		base,
@@ -54,6 +56,61 @@ export default defineConfig(({ mode }) => {
 						},
 					})
 				: null,
+			mode === 'development' ? mkcert() : null,
+			VitePWA({
+				registerType: 'autoUpdate',
+				injectRegister: 'script',
+				workbox: {
+					globPatterns: ['**/*.{js,css,html,ico,png,svg}'],
+					sourcemap: true,
+				},
+				devOptions: {
+					enabled: true,
+				},
+				includeAssets: [
+					'/favicon.ico',
+					'/apple-touch-icon.png',
+					'/mask-icon.png',
+					'/images/Jiglo.png',
+					'/images/PeablossomIcedTea.png',
+					'/images/PopAndCrumbs.png',
+				],
+				manifest: {
+					name: 'Sip & Bites',
+					short_name: 'Sip & Bites',
+					description: 'Sip & Bites',
+					theme_color: '#1b4965',
+					icons: [
+						{
+							src: `${base}pwa-192x192.png`,
+							sizes: '192x192',
+							type: 'image/png',
+						},
+						{
+							src: `${base}pwa-228x228.png`,
+							sizes: '228x228',
+							type: 'image/png',
+						},
+						{
+							src: `${base}pwa-512x512.png`,
+							sizes: '512x512',
+							type: 'image/png',
+						},
+						{
+							src: `${base}pwa-512x512.png`,
+							sizes: '512x512',
+							type: 'image/png',
+							purpose: 'any',
+						},
+						{
+							src: `${base}pwa-512x512.png`,
+							sizes: '512x512',
+							type: 'image/png',
+							purpose: 'maskable',
+						},
+					],
+				},
+			}),
 		],
 		resolve: {
 			alias: resolveAlias,

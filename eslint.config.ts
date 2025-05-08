@@ -16,7 +16,7 @@ export default tsEslint.config(
 	tsEslint.configs.strictTypeChecked,
 	tsEslint.configs.stylisticTypeChecked,
 	prettierRecommended,
-	{ name: 'Ignores', ignores: ['build/**/*'] },
+	{ name: 'Ignores', ignores: ['build/**/*', 'dev-dist/**/*'] },
 	{
 		name: 'Main',
 		files: ['**/*.{ts,tsx}', 'eslint.config.ts'],
