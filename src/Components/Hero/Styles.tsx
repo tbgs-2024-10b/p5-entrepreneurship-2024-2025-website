@@ -8,9 +8,7 @@ export const Container = styled.section`
 	align-items: center;
 
 	width: 100%;
-	height: calc(100dvh - 50px);
-
-	margin-top: 50px;
+	height: 100dvh;
 `
 
 export const InnerContainer = styled.div`
