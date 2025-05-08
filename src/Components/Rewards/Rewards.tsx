@@ -1,4 +1,6 @@
-import { FC, useCallback, useState } from 'react'
+import { FC, useCallback, useEffect, useState } from 'react'
+
+import { toast } from 'react-toastify'
 
 import { SectionContainer, SectionTitle } from 'Components/Common'
 
@@ -155,6 +157,25 @@ const Rewards: FC = () => {
 	const Show = useCallback(() => {
 		SetIsShowing(true)
 	}, [])
+
+	useEffect(() => {
+		if (PreviousItemsIds.length !== 3) return
+
+		if (
+			PreviousItemsIds[0] === PreviousItemsIds[1] &&
+			PreviousItemsIds[0] === PreviousItemsIds[2]
+		) {
+			toast.info(
+				'Congratulations! You got the same item three times! 🎉🎉🎉',
+			)
+
+			if (PreviousItemsIds[0] !== ChestItem.id) {
+				toast.info(
+					"Wow! You got the chest item three times! That's a very rare event! 🎉🎉🎉🎉🎉",
+				)
+			}
+		}
+	}, [PreviousItemsIds])
 
 	return (
 		<SectionContainer id='rewards'>
