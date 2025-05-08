@@ -79,11 +79,19 @@ const Rewards: FC = () => {
 					<Button onClick={Restart}>Restart</Button>
 				</>
 			) : DidStart ? (
-				<>
-					<Info>Streak: {Streak}</Info>
-					<Info>&nbsp;</Info>
-					<Button onClick={Reroll}>Reroll</Button>
-				</>
+				Streak >= 3 ? (
+					<>
+						<Info>Congratulations! You won! 🎉🎉🎉</Info>
+						<Info>Streak: {Streak}</Info>
+						<Button onClick={Restart}>Restart</Button>
+					</>
+				) : (
+					<>
+						<Info>Streak: {Streak}</Info>
+						<Info>&nbsp;</Info>
+						<Button onClick={Reroll}>Reroll</Button>
+					</>
+				)
 			) : (
 				<>
 					<Info>&nbsp;</Info>
