@@ -80,9 +80,12 @@ export const Button = styled.a`
 
 	cursor: pointer;
 
-	transition: background-color 0.3s ease-in-out;
+	transition:
+		background-color 0.3s ease-in-out,
+		scale 0.3s ease-in-out;
 
 	&:hover {
 		background-color: ${Theme.highlight};
+		scale: 1.1;
 	}
 `

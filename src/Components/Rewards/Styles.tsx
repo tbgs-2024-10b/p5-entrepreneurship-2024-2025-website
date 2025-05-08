@@ -46,10 +46,13 @@ export const Button = styled.button`
 
 	font-size: 16px;
 
-	transition: background-color 0.3s ease-in-out;
+	transition:
+		background-color 0.3s ease-in-out,
+		scale 0.3s ease-in-out;
 
 	&:hover {
 		background-color: ${Theme.highlight};
+		scale: 1.1;
 	}
 `
 
