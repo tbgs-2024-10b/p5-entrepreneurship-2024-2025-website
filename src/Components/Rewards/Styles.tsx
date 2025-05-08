@@ -4,6 +4,17 @@ import Theme from 'Constants/Theme'
 
 export const Image = styled.img`
 	height: 50dvh;
+	aspect-ratio: 4/5;
+
+	transition: opacity 0.2s ease-in-out;
+
+	&.faded {
+		opacity: 0;
+	}
+
+	&.visible {
+		opacity: 1;
+	}
 `
 
 export const ImagePlaceholder = styled.div`

@@ -13,6 +13,7 @@ const Rewards: FC = () => {
 	)
 	const [DidLose, SetDidLose] = useState(false)
 	const [DidStart, SetDidStart] = useState(false)
+	const [IsFading, SetIsFading] = useState(false)
 
 	const Reroll = useCallback(() => {
 		SetDidStart(true)
@@ -22,6 +23,8 @@ const Rewards: FC = () => {
 			Products[Math.floor(Math.random() * Products.length)]!
 
 		SetPreviousProductId(randomProduct.id)
+
+		SetIsFading(true)
 
 		if (PreviousProductId === null) {
 			SetStreak(1)
@@ -55,6 +58,13 @@ const Rewards: FC = () => {
 							product => product.id === PreviousProductId,
 						)?.imageSrc
 					}
+					onLoad={() => {
+						SetIsFading(false)
+					}}
+					onTransitionEnd={() => {
+						SetIsFading(false)
+					}}
+					className={IsFading ? 'faded' : 'visible'}
 				/>
 			) : (
 				<ImagePlaceholder>
