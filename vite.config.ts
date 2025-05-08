@@ -77,6 +77,7 @@ export default defineConfig(({ mode }) => {
 					'/hero.jpg',
 				],
 				manifest: {
+					id: 'sip-and-bites',
 					name: 'Sip & Bites',
 					short_name: 'Sip & Bites',
 					description: 'Sip & Bites',
