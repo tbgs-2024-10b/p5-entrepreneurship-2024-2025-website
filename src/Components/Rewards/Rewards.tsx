@@ -2,6 +2,8 @@ import { FC, useCallback, useState } from 'react'
 
 import { SectionContainer, SectionTitle } from 'Components/Common'
 
+import WeightedRandom, { WeightedItem } from 'Utils/WeightedRandom'
+
 import Products from 'Constants/Products'
 
 import {
@@ -13,26 +15,140 @@ import {
 	PreviousImages,
 } from './Styles'
 
+interface Item {
+	id: string
+	imageSrc: string
+}
+
+const ItemsNoChest: Item[] = [...Products]
+
+const ChestItem = {
+	id: '6c880386-4ab2-49b3-bed4-5b36b84990b5',
+	imageSrc: `${__PUBLIC_URL__}/chest.png`,
+}
+
+const Items: Item[] = [...ItemsNoChest, ChestItem]
+
 const Rewards: FC = () => {
-	const [PreviousProductIds, SetPreviousProductIds] = useState<string[]>([])
+	const [PreviousItemsIds, SetPreviousItemsIds] = useState<string[]>([])
 	const [DidStart, SetDidStart] = useState(false)
 	const [IsFading, SetIsFading] = useState(false)
 
 	const Reroll = useCallback(() => {
 		SetDidStart(true)
 
-		const randomProduct =
-			// eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-			Products[Math.floor(Math.random() * Products.length)]!
+		let randomItem: Item
 
-		SetPreviousProductIds(prev => [...prev, randomProduct.id])
+		if (PreviousItemsIds.length === 0) {
+			// eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+			randomItem = WeightedRandom([
+				...ItemsNoChest.map(
+					item =>
+						[
+							item,
+							(1 - 0.05) / ItemsNoChest.length,
+						] as WeightedItem<Item>,
+				),
+				[ChestItem, 0.05],
+			])!
+		} else if (PreviousItemsIds.length === 1) {
+			const weights: WeightedItem<Item>[] = [
+				...ItemsNoChest.filter(
+					item => item.id !== PreviousItemsIds[0],
+				).map(
+					(item, _, arr) =>
+						[
+							item,
+							(1 - 0.05 - 0.2) / arr.length,
+						] as WeightedItem<Item>,
+				),
+				[ChestItem, 0.05],
+			]
+
+			if (PreviousItemsIds[0] !== ChestItem.id) {
+				weights.push([
+					// eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+					ItemsNoChest.find(item => item.id === PreviousItemsIds[0])!,
+					0.2,
+				])
+			}
+
+			// eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+			randomItem = WeightedRandom(weights)!
+		} else if (PreviousItemsIds.length === 2) {
+			if (PreviousItemsIds[0] === PreviousItemsIds[1]) {
+				const weights: WeightedItem<Item>[] = [
+					...ItemsNoChest.filter(
+						item => item.id !== PreviousItemsIds[0],
+					).map(
+						(item, _, arr) =>
+							[
+								item,
+								(1 - 0.05 - 0.05) / arr.length,
+							] as WeightedItem<Item>,
+					),
+					[ChestItem, 0.05],
+				]
+
+				if (PreviousItemsIds[0] !== ChestItem.id) {
+					weights.push([
+						// eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+						ItemsNoChest.find(
+							item => item.id === PreviousItemsIds[0],
+						)!,
+						0.05,
+					])
+				}
+
+				// eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+				randomItem = WeightedRandom(weights)!
+			} else {
+				const weights: WeightedItem<Item>[] = [
+					...ItemsNoChest.filter(
+						item => !PreviousItemsIds.includes(item.id),
+					).map(
+						(item, _, arr) =>
+							[
+								item,
+								(1 - 0.05 - 0.2 - 0.2) / arr.length,
+							] as WeightedItem<Item>,
+					),
+					[ChestItem, 0.05],
+				]
+
+				if (PreviousItemsIds[0] !== ChestItem.id) {
+					weights.push([
+						// eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+						ItemsNoChest.find(
+							item => item.id === PreviousItemsIds[0],
+						)!,
+						0.2,
+					])
+				}
+
+				if (PreviousItemsIds[1] !== ChestItem.id) {
+					weights.push([
+						// eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+						ItemsNoChest.find(
+							item => item.id === PreviousItemsIds[1],
+						)!,
+						0.2,
+					])
+				}
+
+				// eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+				randomItem = WeightedRandom(weights)!
+			}
+		}
+
+		SetPreviousItemsIds(prev => [...prev, randomItem.id])
 
 		SetIsFading(true)
-	}, [])
+	}, [PreviousItemsIds])
 
 	const Restart = useCallback(() => {
 		SetDidStart(false)
-		SetPreviousProductIds([])
+		SetPreviousItemsIds([])
 	}, [])
 
 	return (
@@ -43,12 +159,10 @@ const Rewards: FC = () => {
 				<Image
 					alt="Game's Image"
 					src={
-						Products.find(
-							product =>
-								product.id ===
-								PreviousProductIds[
-									PreviousProductIds.length - 1
-								],
+						Items.find(
+							item =>
+								item.id ===
+								PreviousItemsIds[PreviousItemsIds.length - 1],
 						)?.imageSrc
 					}
 					onLoad={() => {
@@ -66,7 +180,7 @@ const Rewards: FC = () => {
 			)}
 
 			{DidStart ? (
-				PreviousProductIds.length >= 3 ? (
+				PreviousItemsIds.length >= 3 ? (
 					<>
 						<Info>Congratulations! It&apos;s done! 🎉🎉🎉</Info>
 						<Button onClick={Restart}>Restart</Button>
@@ -85,14 +199,11 @@ const Rewards: FC = () => {
 			)}
 
 			<PreviousImages>
-				{PreviousProductIds.map((productId, index) => (
+				{PreviousItemsIds.map((itemId, index) => (
 					<PreviousImage
 						key={index}
 						alt="Game's Image"
-						src={
-							Products.find(product => product.id === productId)
-								?.imageSrc
-						}
+						src={Items.find(item => item.id === itemId)?.imageSrc}
 					/>
 				))}
 			</PreviousImages>
