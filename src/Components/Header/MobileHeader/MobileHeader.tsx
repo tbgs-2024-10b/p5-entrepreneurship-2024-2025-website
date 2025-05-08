@@ -13,7 +13,7 @@ const MobileHeader: FC = () => {
 		<>
 			<Container>
 				<Link href='#hero'>
-					<Logo>P5</Logo>
+					<Logo>Sip & Bites</Logo>
 				</Link>
 				<Burger onClick={ToggleNav}>
 					<span></span>
@@ -23,15 +23,15 @@ const MobileHeader: FC = () => {
 			</Container>
 			<Nav $isOpen={IsOpen}>
 				<Links>
-					<LinkItem>
+					{/* <LinkItem>
 						<Link href='#aboutUs'>About Us</Link>
-					</LinkItem>
+					</LinkItem> */}
 					<LinkItem>
 						<Link href='#products'>Products</Link>
 					</LinkItem>
-					<LinkItem>
+					{/* <LinkItem>
 						<Link href='#contactUs'>Contact Us</Link>
-					</LinkItem>
+					</LinkItem> */}
 				</Links>
 			</Nav>
 		</>

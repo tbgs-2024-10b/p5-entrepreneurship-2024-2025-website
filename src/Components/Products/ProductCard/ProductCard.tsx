@@ -1,22 +1,19 @@
 import { FC } from 'react'
 
-import { Container, Content, Description, Image, Name } from './Styles'
+import { Container, Content, Image, Name } from './Styles'
 
 interface Props {
 	name: string
-	description: string
 	imageSrc: string
-	inverted: boolean
 }
 
 const ProductCard: FC<Props> = props => {
 	return (
-		<Container $inverted={props.inverted}>
+		<Container>
+			<Image src={props.imageSrc} alt={`${props.name}' Image`} />
 			<Content>
 				<Name>{props.name}</Name>
-				<Description>{props.description}</Description>
 			</Content>
-			<Image src={props.imageSrc} alt={`${props.name}' Image`} />
 		</Container>
 	)
 }

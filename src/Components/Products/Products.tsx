@@ -16,9 +16,7 @@ const Products: FC = () => {
 					<ProductCard
 						key={index}
 						name={product.name}
-						description={product.description}
 						imageSrc={product.imageSrc}
-						inverted={index % 2 === 0}
 					/>
 				))}
 			</Content>

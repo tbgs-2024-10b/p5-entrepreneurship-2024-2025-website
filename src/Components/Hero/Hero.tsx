@@ -18,7 +18,7 @@ const Hero: FC = () => {
 			<InnerContainer>
 				<Content>
 					<Texts>
-						<Title>P5-3</Title>
+						<Title>Sip & Bites</Title>
 						<Subtitle>
 							Lorem ipsum dolor sit amet consectetur, adipisicing
 							elit. Nobis, sunt consequuntur. Pariatur incidunt

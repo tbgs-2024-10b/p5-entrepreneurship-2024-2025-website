@@ -22,7 +22,7 @@ export const Container = styled.header`
 	z-index: 200;
 `
 
-export const Logo = styled.div`
+export const Logo = styled.h2`
 	height: 100%;
 
 	display: flex;
@@ -32,6 +32,8 @@ export const Logo = styled.div`
 	color: ${Theme.secondary};
 
 	font-weight: bold;
+
+	font-size: 20px;
 `
 
 export const Links = styled.ul`

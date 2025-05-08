@@ -1,27 +1,34 @@
 import { styled } from 'styled-components'
 
-export const Container = styled.div<{ $inverted: boolean }>`
+import Theme from 'Constants/Theme'
+
+export const Container = styled.div`
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	flex-direction: ${props => (props.$inverted ? 'row-reverse' : 'row')};
+	flex-direction: column;
 	gap: 20px;
 
-	width: 100%;
-	height: 200px;
+	width: 30%;
+
+	padding-bottom: 20px;
+
+	border: 2px solid ${Theme.primary};
+
+	border-radius: 12px;
 
 	@media screen and (max-width: 800px) {
-		width: 100%;
-		height: unset;
+		width: 40%;
+	}
 
-		flex-direction: column-reverse;
+	@media screen and (max-width: 600px) {
+		width: 90%;
 	}
 `
 
 export const Content = styled.div`
 	display: flex;
-	justify-content: space-around;
-	align-items: flex-start;
+	justify-content: center;
 	flex-direction: column;
 
 	height: 100%;
@@ -33,21 +40,11 @@ export const Content = styled.div`
 `
 
 export const Name = styled.h3`
-	text-align: left;
-`
-
-export const Description = styled.p`
-	text-align: left;
+	text-align: center;
 `
 
 export const Image = styled.img`
-	aspect-ratio: 1 / 1;
-	height: 100%;
+	width: 100%;
 
-	border-radius: 10px;
-
-	@media screen and (max-width: 800px) {
-		width: 80%;
-		height: unset;
-	}
+	border-radius: 10px 10px 0 0;
 `

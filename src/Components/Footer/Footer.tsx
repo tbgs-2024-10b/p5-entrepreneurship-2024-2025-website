@@ -5,7 +5,7 @@ import { Container, Text } from './Styles'
 const Footer: FC = () => {
 	return (
 		<Container>
-			<Text>&copy; Copyright 2025 P5 | All rights reserved</Text>
+			<Text>&copy; Copyright 2025 Sip & Bites | All rights reserved</Text>
 		</Container>
 	)
 }

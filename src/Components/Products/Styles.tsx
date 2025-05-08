@@ -1,13 +1,14 @@
 import { styled } from 'styled-components'
 
 export const Content = styled.div`
-	width: 70%;
+	width: 80%;
 
 	display: flex;
 	justify-content: center;
-	align-items: center;
-	flex-direction: column;
+	align-items: flex-start;
+	flex-direction: row;
 	gap: 20px;
+	flex-wrap: wrap;
 
 	@media screen and (max-width: 1000px) {
 		width: 90%;

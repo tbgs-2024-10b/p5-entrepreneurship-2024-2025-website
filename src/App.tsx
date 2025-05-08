@@ -1,7 +1,5 @@
 import { FC } from 'react'
 
-import AboutUs from 'Components/AboutUs/AboutUs'
-import ContactUs from 'Components/ContactUs/ContactUs'
 import Footer from 'Components/Footer/Footer'
 import Header from 'Components/Header/Header'
 import Hero from 'Components/Hero/Hero'
@@ -12,9 +10,7 @@ const App: FC = () => {
 		<>
 			<Header />
 			<Hero />
-			<AboutUs />
 			<Products />
-			<ContactUs />
 			<Footer />
 		</>
 	)

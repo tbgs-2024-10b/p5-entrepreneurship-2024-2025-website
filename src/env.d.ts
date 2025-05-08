@@ -7,3 +7,5 @@ interface ImportMetaEnv {}
 interface ImportMeta {
 	readonly env: Readonly<ImportMetaEnv>
 }
+
+declare const __PUBLIC_URL__: string
