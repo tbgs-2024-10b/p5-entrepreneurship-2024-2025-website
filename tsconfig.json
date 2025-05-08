@@ -44,7 +44,7 @@
 				}
 			}
 		],
-		"types": [ "vite-plugin-pwa/react"]
+		"types": ["vite-plugin-pwa/react"]
 	},
 	"include": ["src", "vite.config.ts", "eslint.config.ts"]
 }
