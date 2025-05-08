@@ -1,5 +1,7 @@
 import { FC } from 'react'
 
+import { ToastContainer } from 'react-toastify'
+
 import Hero from 'Components/Hero/Hero'
 import PWAUpdate from 'Components/PWAUpdate/PWAUpdate'
 import Products from 'Components/Products/Products'
@@ -12,6 +14,7 @@ const App: FC = () => {
 			<Products />
 			<Rewards />
 			<PWAUpdate />
+			<ToastContainer />
 		</>
 	)
 }

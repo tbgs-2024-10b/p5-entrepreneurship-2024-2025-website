@@ -1,6 +1,6 @@
 import { FC } from 'react'
 
-import { ToastContainer, toast } from 'react-toastify'
+import { toast } from 'react-toastify'
 import { useRegisterSW } from 'virtual:pwa-register/react'
 
 const PWAUpdate: FC = () => {
@@ -23,7 +23,7 @@ const PWAUpdate: FC = () => {
 		},
 	})
 
-	return <ToastContainer />
+	return null
 }
 
 export default PWAUpdate
