@@ -75,7 +75,7 @@ const Rewards: FC = () => {
 			{DidLose ? (
 				<>
 					<Info>You lost! Press restart to try again!</Info>
-					<Info>Your streak was {Streak}</Info>
+					<Info>Your streak was {Streak}.</Info>
 					<Button onClick={Restart}>Restart</Button>
 				</>
 			) : DidStart ? (
