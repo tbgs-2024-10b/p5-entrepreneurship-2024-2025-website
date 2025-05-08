@@ -38,8 +38,10 @@ export default defineConfig(({ mode }) => {
 		...loadEnv(mode, process.cwd(), ''),
 	}
 
+	const base = '/p5-entrepreneurship-2024-2025-website/'
+
 	return {
-		base: '/p5-entrepreneurship-2024-2025-website/',
+		base,
 		plugins: [
 			react(),
 			svgr(),
@@ -63,6 +65,9 @@ export default defineConfig(({ mode }) => {
 		envPrefix,
 		build: {
 			outDir: 'build',
+		},
+		define: {
+			__PUBLIC_URL__: `'${base}'`,
 		},
 	}
 })
