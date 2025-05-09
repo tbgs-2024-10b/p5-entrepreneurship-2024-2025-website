@@ -61,7 +61,7 @@ export default defineConfig(({ mode }) => {
 				registerType: 'autoUpdate',
 				injectRegister: 'script',
 				workbox: {
-					globPatterns: ['**/*.{js,css,html,ico,png,svg}'],
+					globPatterns: ['**/*.{js,css,html,ico,png,svg,mp4,jfif}'],
 					sourcemap: true,
 				},
 				devOptions: {
