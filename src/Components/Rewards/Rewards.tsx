@@ -62,7 +62,7 @@ const Rewards: FC = () => {
 					(item, _, arr) =>
 						[
 							item,
-							(1 - 0.05 - 0.2) / arr.length,
+							(1 - 0.05 - 0.3) / arr.length,
 						] as WeightedItem<Item>,
 				),
 				[ChestItem, 0.05],
@@ -72,7 +72,7 @@ const Rewards: FC = () => {
 				weights.push([
 					// eslint-disable-next-line @typescript-eslint/no-non-null-assertion
 					ItemsNoChest.find(item => item.id === PreviousItemsIds[0])!,
-					0.2,
+					0.3,
 				])
 			}
 
@@ -87,7 +87,7 @@ const Rewards: FC = () => {
 						(item, _, arr) =>
 							[
 								item,
-								(1 - 0.05 - 0.05) / arr.length,
+								(1 - 0.05 - 0.1) / arr.length,
 							] as WeightedItem<Item>,
 					),
 					[ChestItem, 0.05],
@@ -99,7 +99,7 @@ const Rewards: FC = () => {
 						ItemsNoChest.find(
 							item => item.id === PreviousItemsIds[0],
 						)!,
-						0.05,
+						0.1,
 					])
 				}
 
@@ -113,7 +113,7 @@ const Rewards: FC = () => {
 						(item, _, arr) =>
 							[
 								item,
-								(1 - 0.05 - 0.2 - 0.2) / arr.length,
+								(1 - 0.05 - 0.3 - 0.3) / arr.length,
 							] as WeightedItem<Item>,
 					),
 					[ChestItem, 0.05],
@@ -125,7 +125,7 @@ const Rewards: FC = () => {
 						ItemsNoChest.find(
 							item => item.id === PreviousItemsIds[0],
 						)!,
-						0.2,
+						0.3,
 					])
 				}
 
@@ -135,7 +135,7 @@ const Rewards: FC = () => {
 						ItemsNoChest.find(
 							item => item.id === PreviousItemsIds[1],
 						)!,
-						0.2,
+						0.3,
 					])
 				}
 
