@@ -169,7 +169,7 @@ const Rewards: FC = () => {
 				'Congratulations! You got the same item three times! 🎉🎉🎉',
 			)
 
-			if (PreviousItemsIds[0] !== ChestItem.id) {
+			if (PreviousItemsIds[0] === ChestItem.id) {
 				toast.info(
 					"Wow! You got the chest item three times! That's a very rare event! 🎉🎉🎉🎉🎉",
 				)
