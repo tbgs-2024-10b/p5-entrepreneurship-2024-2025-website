@@ -17,7 +17,8 @@ const ContactUs: FC = () => {
 				to contact us, please don&apos;t. We don&apos;t want to hear
 				from you if you don&apos;t have a good reason to contact us. Why
 				not reach out only when it truly matters? How about that? We
-				might not even read your message. We might just ignore it. Lorem ipsum dolor sit amet
+				might not even read your message. We might just ignore it. Lorem
+				ipsum dolor sit amet
 			</Text>
 		</SectionContainer>
 	)
